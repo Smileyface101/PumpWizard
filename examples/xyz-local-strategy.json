@@ -1,0 +1,25 @@
+{
+  "schema": "pumpwizard.strategy/v2",
+  "strategy": {
+    "id": "xyz-momentum-example",
+    "label": "XYZ momentum example",
+    "version": "1.0.0",
+    "engine": "pumpwizard-core/1"
+  },
+  "market": {
+    "chain": "solana",
+    "observation_seconds": 60,
+    "valuation": "provider_total_supply_times_index_price"
+  },
+  "rules": {
+    "entry_style": "momentum",
+    "entry_cap_min_usd": 10000,
+    "entry_cap_max_usd": 25000,
+    "minimum_growth_fraction": 0.01,
+    "minimum_reserve_growth_usd": 10,
+    "take_profit_fraction": 0.2,
+    "stop_loss_fraction": -0.1,
+    "max_hold_seconds": 180
+  }
+}
+

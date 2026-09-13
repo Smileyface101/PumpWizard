@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pumpwizard-runner"
+version = "0.1.0"
+description = "A local-first desktop runner for versioned PumpWizard strategy configurations"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+authors = [{name = "PumpWizard contributors"}]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+dependencies = []
+
+[project.optional-dependencies]
+build = ["pyinstaller==6.22.3"]
+dev = ["pytest==8.4.2", "ruff==0.13.2"]
+
+[project.scripts]
+pumpwizard = "pumpwizard_runner.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Smileyface101/PumpWizard"
+Repository = "https://github.com/Smileyface101/PumpWizard"
+Issues = "https://github.com/Smileyface101/PumpWizard/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
