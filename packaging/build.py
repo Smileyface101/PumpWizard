@@ -37,7 +37,9 @@ def main() -> None:
     system = platform.system().lower().replace("darwin", "macos")
     archive_base = args.output / f"PumpWizard-{system}-{platform.machine().lower()}"
     archive = Path(shutil.make_archive(str(archive_base), "zip", dist))
-    checksums = args.output / "SHA256SUMS.txt"
+    # Each platform artifact is uploaded by a separate CI job. Give its checksum
+    # a distinct filename so a tagged release can attach all three at once.
+    checksums = args.output / f"SHA256SUMS-{system}-{platform.machine().lower()}.txt"
     checksums.write_text(f"{sha256(archive)}  {archive.name}\n", encoding="utf-8")
     print(archive)
 
